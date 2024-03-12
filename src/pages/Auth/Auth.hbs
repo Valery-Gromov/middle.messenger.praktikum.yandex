@@ -1,0 +1,19 @@
+<section class='authorize-section'>
+  <img class='authorize-section__logo' src='{{logoImage}}' />
+  <div class='authorize-section__form-container'>
+    {{> PageTitle title="Create your account" }}
+    <p class='authorize-section__form-decription'>Start chat with your friends today</p>
+    {{#> FormBlock}}
+      {{> Input class='form__email' type='email' placeholder='Email' name='' id='reg-email' }}
+      {{> Input class='form__login' type='text' placeholder='Login' name='' id='reg-login' }}
+      {{> Input class='form__password' type='password' placeholder='Password' name='' id='reg-password' }}
+      {{> Input class='form__password' type='password' placeholder='Confirm Password' name='' id='reg-confirm-password' }}
+      {{> Input class='form__name' type='text' placeholder='First Name' name='' id='reg-first-name' }}
+      {{> Input class='form__name' type='text' placeholder='Last Name' name='' id='reg-last-name' }}
+      {{> ConfirmButton text='I accept' linkText='Terms of Service' buttonText='Start' }}
+    {{/ FormBlock}}
+  </div>
+  <div class='authorize-section__image-container'>
+    <img src='{{astronautImage}}' alt='astronaut' />
+  </div>
+</section>
