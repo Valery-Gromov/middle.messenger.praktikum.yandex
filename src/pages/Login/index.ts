@@ -12,3 +12,4 @@ Handlebars.registerHelper('astronautImage', () => {
   Handlebars.registerHelper('logoImage', () => {
       return logoImage;
     });
+    
