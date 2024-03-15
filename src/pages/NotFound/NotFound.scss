@@ -1,7 +1,9 @@
+@import '../../styles/colors.scss';
+
 .notFound {
     &__title {
         font-size: 410px;
-        color: rgba(255, 255, 255, 0.50);
+        color: rgba($white-color, 0.50);
     }
 
     &__container {
