@@ -1,0 +1,78 @@
+<section class='chat-container'>
+  <div class='chat-options'>
+    <div class='chat-container__header header'>
+      <div class='chat-options__options-button options-button'>
+        <img src='{{burgerImage}}' alt='open menu' />
+      </div>
+      <h3 class='chat-options__options-title'>Messages</h3>
+      <div class='chat-options__create-chat-button'>
+        <img src='{{newChatImage}}' alt='open new chat' />
+      </div>
+    </div>
+    <div class='chat-options__search'>
+      <div class='chat-options__search-container'>
+        <input class='chat-options__search-input' type='text' placeholder='Search' />
+        <img src='{{searchImage}}' alt='Search' />
+      </div>
+    </div>
+    <ul class='chat-options__group'>
+        {{> SelectedChatList value='All chats' active-selector='active-selector' }}
+        {{> SelectedChatList value='Private' active-selector='' }}
+        {{> SelectedChatList value='Group' active-selector='' }}
+    </ul>
+    <ul class='chat-list'>
+        {{#each (chat-list)}}
+          {{> ChatListItem }}
+        {{/each}}
+    </ul>
+  </div>
+  <div class='chat-messenger'>
+    <div class='chat-messenger__header header'>
+      <div class='chat-messenger__selected-chat-info'>
+        <div class='chat-messenger__selected-chat-photo'>
+          <img src='{{chatAvatarImage}}' alt='Photo' />
+        </div>
+        <h3 class='chat-messenger__selected-chat-name'>
+          Mom
+        </h3>
+      </div>
+      <ul class='chat-messenger__options-container'>
+        <li>
+          <button class='chat-messenger__options-button'>
+            <img src='{{searchImage}}' alt='Search' />
+          </button>
+        </li>
+        <li>
+          <button class='chat-messenger__options-button'>
+            <img src='{{editImage}}' alt='Edit' />
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class='chat-messenger__messages-window'>
+      <div class='chat-messenger__message-container'>
+        <div class='message'>
+          <p class='message__text'>Hi</p>
+          <span class='message__time'>4:30 PM</span>
+        </div>
+      </div>
+      <div class='chat-messenger__message-container chat-messenger__message-container_companion'>
+        <div class='message message_companion'>
+          <p class='message__text message__text_companion'>Hi</p>
+          <span class='message__time message__time_companion'>4:30 PM</span>
+        </div>
+      </div>
+    </div>
+    <div class='chat-messenger__input-area'>
+      <div class='chat-messenger__input-container'>
+        <div class='chat-messenger__input'>
+          <input type='text' placeholder='Enter your message' />
+          <img src='{{attachImage}}' alt='attach' />
+        </div>
+        <button class='chat-messenger__send-message-button'>
+          <img src='{{sendImage}}' alt='send' />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

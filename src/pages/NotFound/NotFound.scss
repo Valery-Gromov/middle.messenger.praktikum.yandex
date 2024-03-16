@@ -1,0 +1,14 @@
+@import '../../styles/colors.scss';
+
+.notFound {
+    &__title {
+        font-size: 410px;
+        color: rgba($white-color, 0.50);
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
