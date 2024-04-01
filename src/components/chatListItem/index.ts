@@ -3,10 +3,18 @@ import Block from '../../tools/Block';
 
 export { default as ChatListItem } from './chatListItem.hbs?raw';
 
-export class ChatListItemComponent extends Block {
-  props: { [key: string]: any } | undefined; // Определение свойства props
+type ChatListItemComponentProps = {
+  photoLink: string;
+  photoAlt: string;
+  contactName: string;
+  messageTime: string;
+  messageText: string;
+  unreadedMessagesCount: number;
+}
 
-  constructor(props: { [key: string]: any }) {
+export class ChatListItemComponent extends Block {
+
+  constructor(props: ChatListItemComponentProps) {
     super({ ...props }); // Передаем props в конструктор родительского класса Block
   }
 

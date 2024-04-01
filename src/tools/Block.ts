@@ -2,6 +2,7 @@ import Handlebars from "handlebars";
 import EventBus from "./EventBus";
 
 interface Props {
+  // eslint-disable-next-line
   [key: string]: any;
 }
 
@@ -31,6 +32,7 @@ export default class Block {
   lists: Lists;
   eventBus: () => EventBus;
 
+  // eslint-disable-next-line
   constructor(propsWithChildren: { [key: string]: any } = {}) {
     const eventBus = new EventBus();
     const { props, children, lists } =
@@ -72,7 +74,7 @@ export default class Block {
     });
   }
 
-  componentDidMount(oldProps?: Props): void {}
+  componentDidMount(): void {}
 
   dispatchComponentDidMount(): void {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -85,10 +87,11 @@ export default class Block {
     }
   }
 
-  componentDidUpdate(oldProps: Props, newProps: Props): boolean {
+  componentDidUpdate(): boolean {
     return true;
   }
 
+  // eslint-disable-next-line
   private _getChildrenPropsAndProps(propsAndChildren: { [key: string]: any }) {
     const children: Children = {};
     const props: Props = {};
@@ -108,6 +111,7 @@ export default class Block {
   }
 
   private _makePropsProxy(props: Props): Props {
+    // eslint-disable-next-line
     const self = this;
 
     return new Proxy(props, {
@@ -144,7 +148,7 @@ export default class Block {
       }
     });
 
-    Object.entries(this.lists).forEach(([key, child]) => {
+    Object.entries(this.lists).forEach(([key]) => {
       propsAndStubs[key] = `<div data-id="__l_${_tmpId}"></div>`;
     });
 
@@ -160,6 +164,7 @@ export default class Block {
       }
     });
 
+// eslint-disable-next-line
     Object.entries(this.lists).forEach(([key, child]) => {
       const listCont = this._createDocumentElement("template");
       child.forEach((item) => {

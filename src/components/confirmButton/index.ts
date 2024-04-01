@@ -4,10 +4,13 @@ import './confirmButton.scss';
 
 export { default as ConfirmButton } from './confirmButton.hbs?raw';
 
-export class ConfirmButtonComponent extends Block {
-  props: { [key: string]: any } | undefined; // Определение свойства props
+type ConfirmButtonComponentProps = {
+  buttonText: string;
+}
 
-  constructor(props: { [key: string]: any }) {
+export class ConfirmButtonComponent extends Block {
+
+  constructor(props: ConfirmButtonComponentProps) {
     super({
       ...props,
     }); // Передаем props в конструктор родительского класса Block

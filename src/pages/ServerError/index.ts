@@ -8,7 +8,7 @@ import "../NotFound/NotFound.scss";
 Handlebars.registerHelper("logoImage", () => logoImage);
 
 type ServerErrorComponentProps = {
-  logoImage: String;
+  logoImage: string;
   pageTitle: PageTitleBlock;
   buttonText: ConfirmButtonComponent;
 }

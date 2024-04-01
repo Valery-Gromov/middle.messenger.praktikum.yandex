@@ -30,7 +30,7 @@ const handleFormData = (e: Event) => {
   const formData = new FormData(e.target as HTMLFormElement);
 
   // Создание объекта для сбора данных
-  const formDataObject: Record<string, any> = {};
+  const formDataObject: Record<string, FormDataEntryValue> = {};
 
   // Проход по каждому полю формы и добавление его в объект
   formData.forEach((value, key) => {

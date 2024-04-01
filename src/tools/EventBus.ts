@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 type EventCallback = (...args: any[]) => void;
 
 export default class EventBus {
@@ -20,9 +21,11 @@ export default class EventBus {
       throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event] = this.listeners[event].filter((listener) => listener !== callback);
+    this.listeners[event] = this.listeners[event].filter(
+      (listener) => listener !== callback
+    );
   }
-
+  // eslint-disable-next-line
   emit(event: string, ...args: any[]): void {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);

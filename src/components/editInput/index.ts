@@ -7,10 +7,16 @@ export { default as editInput } from './editInput.hbs?raw';
 
 Handlebars.registerHelper('penImage', () => penImage);
 
-export class EditInputComponent extends Block {
-  props: { [key: string]: any } | undefined; // Определение свойства props
+type EditInputComponentProps = {
+  inputTitle: string;
+  inputType: string;
+  inputPlaceHolder: string;
+  inputName: string;
+  penImage: string;
+}
 
-  constructor(props: { [key: string]: any }) {
+export class EditInputComponent extends Block {
+  constructor(props: EditInputComponentProps) {
     super({ ...props }); // Передаем props в конструктор родительского класса Block
   }
 

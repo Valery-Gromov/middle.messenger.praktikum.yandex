@@ -17,8 +17,8 @@ Handlebars.registerHelper('goBackImg', () => goBackImg);
 Handlebars.registerHelper('addPhotoImg', () => addPhotoImg);
 
 type EditProfileComponentProps = {
-  goBackImg: String;
-  addPhotoImg: String;
+  goBackImg: string;
+  addPhotoImg: string;
   inputList: EditInputComponent[];
   messenger: MessengerComponent;
 }

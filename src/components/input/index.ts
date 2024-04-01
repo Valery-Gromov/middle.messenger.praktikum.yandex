@@ -63,11 +63,18 @@ const handleValidation = (e: Event) => {
   }
 };
 
+interface InputProps {
+  class: string;
+  type: string;
+  placeholder: string;
+  name: string;
+  id: string;
+}
+
 
 export class InputBlock extends Block {
-  props: { [key: string]: any } | undefined; // Определение свойства props
 
-  constructor(props: { [key: string]: any }) {
+  constructor(props: InputProps) {
     super({
       ...props,
       events: {

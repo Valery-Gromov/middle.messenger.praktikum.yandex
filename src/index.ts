@@ -46,7 +46,7 @@ function navigate(page: PageKey) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('login'));
+document.addEventListener('DOMContentLoaded', () => navigate('auth'));
 
 document.querySelector('nav')?.addEventListener('click', (e) => {
   e.preventDefault();

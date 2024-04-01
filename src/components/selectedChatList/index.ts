@@ -2,10 +2,14 @@ import Block from '../../tools/Block';
 
 export { default as SelectedChatList } from './selectedChatList.hbs?raw';
 
-export class SelectedChatListComponent extends Block {
-  props: { [key: string]: any } | undefined; // Определение свойства props
+type SelectedChatListComponentProps = {
+  activeSelector: string;
+  value: string;
+}
 
-  constructor(props: { [key: string]: any }) {
+export class SelectedChatListComponent extends Block {
+
+  constructor(props: SelectedChatListComponentProps) {
     super({ ...props }); // Передаем props в конструктор родительского класса Block
   }
 

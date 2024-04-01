@@ -4,10 +4,13 @@ import Block from '../../tools/Block';
 
 export { default as PageTitle } from './pageTitle.hbs?raw';
 
-export class PageTitleBlock extends Block {
-  props: { [key: string]: any } | undefined; // Определение свойства props
+type PageTitleBlockProps = {
+  title: string;
+}
 
-  constructor(props: { [key: string]: any }) {
+export class PageTitleBlock extends Block {
+
+  constructor(props: PageTitleBlockProps) {
     super({ ...props }); // Передаем props в конструктор родительского класса Block
   }
 

@@ -71,9 +71,9 @@ Handlebars.registerHelper('chat-list', () => [
 ]);
 
 type ChatComponentProps = {
-  burgerImage: String;
-  newChatImage: String;
-  searchImage: String;
+  burgerImage: string;
+  newChatImage: string;
+  searchImage: string;
   chatOptionsItem: SelectedChatListComponent[];
   chatListItem: ChatListItemComponent[];
   messenger: MessengerComponent;

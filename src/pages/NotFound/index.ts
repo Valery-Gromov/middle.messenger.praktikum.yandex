@@ -10,7 +10,7 @@ export { default as NotFound } from "./NotFound.hbs?raw";
 Handlebars.registerHelper("logoImage", () => logoImage);
 
 type NotFoundComponentProps = {
-  logoImage: String;
+  logoImage: string;
   pageTitle: PageTitleBlock;
   buttonText: ConfirmButtonComponent;
 }

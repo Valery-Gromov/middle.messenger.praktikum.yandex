@@ -29,6 +29,7 @@ function queryStringify(data: DataObject): string {
   return queryString ? `?${queryString}` : '';
 }
 
+// eslint-disable-next-line
 function stringifyValue(value: any): string {
   if (typeof value === 'object' && value !== null) {
     if (Array.isArray(value)) {
@@ -46,6 +47,7 @@ type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 interface RequestOptions {
   method: HttpMethod;
   headers?: { [key: string]: string };
+  // eslint-disable-next-line
   data?: any;
   timeout?: number;
 }
@@ -101,6 +103,7 @@ export class HTTPTransport {
     const requestData: { [key: string]: string } = {};
     if (options.data) {
       for (const key in options.data) {
+        // eslint-disable-next-line
         if (options.data.hasOwnProperty(key)) {
           requestData[key] = stringifyValue(options.data[key]);
         }
