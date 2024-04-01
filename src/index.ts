@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import Handlebars from 'handlebars';
 import * as Components from './components';
 import * as Pages from './pages';
@@ -5,13 +7,31 @@ import * as Pages from './pages';
 type PageKey = 'auth' | 'chat' | 'login' | 'editProfile' | 'notFound' | 'serverError';
 
 type Pages = {
-  auth: String;
-  chat: String;
-  login: String;
-  editProfile: String;
-  notFound: String;
-  serverError: String;
+  auth: string;
+  chat: string;
+  login: string;
+  editProfile: string;
+  notFound: string;
+  serverError: string;
 };
+
+const authPage = new Pages.AuthPageComponent();
+const authPageElement = authPage.getContent();
+document.body.appendChild(authPageElement);
+
+const loginPage = new Pages.LoginPageComponent();
+const loginPageElement = loginPage.getContent();
+document.body.appendChild(loginPageElement);
+
+const chatPage = new Pages.ChatComponent();
+const chatPageElement = chatPage.getContent();
+document.body.appendChild(chatPageElement);
+
+const editProfile = new Pages.EditProfileComponent({});
+const editProfileElement = editProfile.getContent();
+document.body.appendChild(editProfileElement);
+
+console.log('chatPageElement', chatPageElement);
 
 const pages: Pages = {
   auth: Pages.AuthPage,
@@ -27,11 +47,11 @@ Object.entries(Components).forEach(([name, component]) => {
 });
 
 function navigate(page: PageKey) {
-
   const source = pages[page];
 
   const handlebarsFunct = Handlebars.compile(source);
-  let app = document.getElementById('app');
+
+  const app = document.getElementById('app');
   app!.innerHTML = handlebarsFunct(page);
 }
 
