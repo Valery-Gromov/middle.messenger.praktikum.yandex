@@ -15,8 +15,15 @@ Handlebars.registerHelper('attachImage', () => attachImage);
 
 Handlebars.registerHelper('sendImage', () => sendImage);
 
+interface MessengerProps {
+  chatAvatarImage: string;
+  editImage: string;
+  attachImage: string;
+  sendImage: string;
+}
+
 export class MessengerComponent extends Block {
-  constructor(props) {
+  constructor(props: MessengerProps) {
     super({
       ...props,
       chatAvatarImage,

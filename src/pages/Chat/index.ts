@@ -70,66 +70,17 @@ Handlebars.registerHelper('chat-list', () => [
   },
 ]);
 
-// const chatOptionsList = [
-//   {
-//     value: 'All chats',
-//     activeSelector: 'active-selector',
-//   },
-//   {
-//     value: 'Private',
-//     activeSelector: '',
-//   },
-//   {
-//     value: 'Group',
-//     activeSelector: '',
-//   },
-// ];
-
-// const chatListData = [
-//   {
-//     photoLink: chatAvatarImage,
-//     photoAlt: 'Photo',
-//     contactName: 'Mom',
-//     messageTime: '18:15',
-//     messageText: 'Hi, honey! Did you forget to put on the floor',
-//     unreadedMessagesCount: '1',
-//   },
-//   {
-//     photoLink: chatAvatarImage,
-//     photoAlt: 'Photo',
-//     contactName: 'Dad',
-//     messageTime: '02:45',
-//     messageText: 'Hi, honey! Did you forget to put on the floor',
-//     unreadedMessagesCount: '1',
-//   },
-//   {
-//     photoLink: chatAvatarImage,
-//     photoAlt: 'Photo',
-//     contactName: 'John Cena',
-//     messageTime: '21:34',
-//     messageText: 'How about restlin tonight?',
-//     unreadedMessagesCount: '1',
-//   },
-//   {
-//     photoLink: chatAvatarImage,
-//     photoAlt: 'Photo',
-//     contactName: 'Mom',
-//     messageTime: '08:30',
-//     messageText: 'Hi, honey! Did you forget to put on the floor',
-//     unreadedMessagesCount: '1',
-//   },
-//   {
-//     photoLink: chatAvatarImage,
-//     photoAlt: 'Photo',
-//     contactName: 'Yossi',
-//     messageTime: '18:15',
-//     messageText: 'I coocked a Humus',
-//     unreadedMessagesCount: '1',
-//   },
-// ];
+type ChatComponentProps = {
+  burgerImage: String;
+  newChatImage: String;
+  searchImage: String;
+  chatOptionsItem: SelectedChatListComponent[];
+  chatListItem: ChatListItemComponent[];
+  messenger: MessengerComponent;
+}
 
 export class ChatComponent extends Block {
-  constructor(props) {
+  constructor(props: ChatComponentProps) {
     super({
       ...props,
       burgerImage,
@@ -183,7 +134,12 @@ export class ChatComponent extends Block {
           unreadedMessagesCount: '1',
         }),
       ],
-      messenger: new MessengerComponent({}),
+      messenger: new MessengerComponent({
+        chatAvatarImage,
+        editImage,
+        attachImage,
+        sendImage,
+      }),
     });
   }
 

@@ -1,5 +1,5 @@
 export { PageTitle, PageTitleBlock } from './pageTitle';
-export { FormBlock, FormAuthComponent, FormLoginComponent } from './formBlock';
+export { FormAuthComponent, FormLoginComponent } from './formBlock';
 export { Input, InputBlock } from './input';
 export { ConfirmButton, ConfirmButtonComponent } from './confirmButton';
 export { SelectedChatList, SelectedChatListComponent } from './selectedChatList';

@@ -4,18 +4,33 @@ import { InputBlock } from '../input';
 import { TermsCheckboxComponent } from '../termsCheckbox';
 import { ConfirmButtonComponent } from '../confirmButton';
 
-export { default as FormBlock } from './formBlock.hbs?raw';
+// interface InputProps {
+//   class: string;
+//   type: string;
+//   placeholder: string;
+//   name: string;
+//   id: string;
+// }
 
-const handleFormData = (e) => {
-  console.log('handleformdata');
+interface FormAuthProps {
+  list: InputBlock[];
+  checkbox: TermsCheckboxComponent;
+  button: ConfirmButtonComponent;
+}
 
+interface FormLoginProps {
+  lists: InputBlock[];
+  button: ConfirmButtonComponent;
+}
+
+const handleFormData = (e: Event) => {
   e.preventDefault(); // Отмена отправки формы
-
   // Получение всех полей формы
-  const formData = new FormData(this);
+
+  const formData = new FormData(e.target as HTMLFormElement);
 
   // Создание объекта для сбора данных
-  const formDataObject = {};
+  const formDataObject: Record<string, any> = {};
 
   // Проход по каждому полю формы и добавление его в объект
   formData.forEach((value, key) => {
@@ -23,15 +38,15 @@ const handleFormData = (e) => {
   });
 
   // Вывод объекта в консоль
-  console.log(formDataObject);
+  console.log('formDataObject', formDataObject);
 };
 
 export class FormAuthComponent extends Block {
-  constructor(props: { [key: string]: any }) {
+  constructor(props: FormAuthProps) {
     super({
       ...props,
       events: {
-        submit: (e) => {
+        submit: (e: Event) => {
           handleFormData(e);
           console.log('submit');
         },
@@ -103,11 +118,11 @@ export class FormAuthComponent extends Block {
 }
 
 export class FormLoginComponent extends Block {
-  constructor(props: { [key: string]: any }) {
+  constructor(props: FormLoginProps) {
     super({
       ...props,
       events: {
-        submit: (e) => {
+        submit: (e: Event) => {
           e.preventDefault();
           e.stopImmediatePropagation();
           console.log('submit');
@@ -117,7 +132,6 @@ export class FormLoginComponent extends Block {
           console.log('form click');
         },
       },
-      formId: 'loginForm',
       lists: [
         new InputBlock({
           class: 'form__login',
@@ -143,7 +157,7 @@ export class FormLoginComponent extends Block {
   // Переопределяем метод рендеринга
   render() {
     return `
-      <form id={{{ formId }}} class="authorize-section__form form form-login">
+      <form class="authorize-section__form form form-login">
        {{{ lists }}}
        {{{ button }}}
       </form>

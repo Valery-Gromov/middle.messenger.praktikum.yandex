@@ -1,25 +1,57 @@
-import Handlebars from 'handlebars';
-import '../Auth/Auth.scss';
-import astronautImage from '../../assets/images/astronaut.png';
-import logoImage from '../../assets/images/logo.svg';
-import { FormLoginComponent, PageTitleBlock } from '../../components';
-import Block from '../../tools/Block';
+import Handlebars from "handlebars";
+import "../Auth/Auth.scss";
+import astronautImage from "../../assets/images/astronaut.png";
+import logoImage from "../../assets/images/logo.svg";
+import {
+  ConfirmButtonComponent,
+  FormLoginComponent,
+  InputBlock,
+  PageTitleBlock,
+} from "../../components";
+import Block from "../../tools/Block";
 
-export { default as Login } from './Login.hbs?raw';
+export { default as Login } from "./Login.hbs?raw";
 
-Handlebars.registerHelper('astronautImage', () => astronautImage);
+Handlebars.registerHelper("astronautImage", () => astronautImage);
 
-Handlebars.registerHelper('logoImage', () => logoImage);
+Handlebars.registerHelper("logoImage", () => logoImage);
+
+interface LoginPageProps {
+  logoImage: string;
+  pageTitle: PageTitleBlock;
+  formComponent: FormLoginComponent;
+  astronautImage: string;
+}
 
 export class LoginPageComponent extends Block {
-  constructor(props) {
+  constructor(props: LoginPageProps) {
     super({
       ...props,
       logoImage,
       pageTitle: new PageTitleBlock({
-        title: 'Create your account',
+        title: "Create your account",
       }),
-      formComponent: new FormLoginComponent({}),
+      formComponent: new FormLoginComponent({
+        lists: [
+          new InputBlock({
+            class: "form__login",
+            type: "text",
+            placeholder: "Login",
+            name: "login",
+            id: "login-login",
+          }),
+          new InputBlock({
+            class: "form__password",
+            type: "password",
+            placeholder: "Password",
+            name: "password",
+            id: "login-password",
+          }),
+        ],
+        button: new ConfirmButtonComponent({
+          buttonText: "Start",
+        }),
+      }),
       astronautImage,
     });
   }

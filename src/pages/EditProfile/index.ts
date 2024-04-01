@@ -4,6 +4,10 @@ import '../Chat/Chat.scss';
 import './EditProfile.scss';
 import goBackImg from '../../assets/images/Back-Arrow.svg';
 import addPhotoImg from '../../assets/images/AddPhotoImg.svg';
+import chatAvatarImage from '../../assets/images/Ellipse 37.png';
+import editImage from '../../assets/images/more_horiz_FILL0_wght300_GRAD0_opsz20 1.svg';
+import attachImage from '../../assets/images/attach_file_FILL0_wght300_GRAD0_opsz20 1.svg';
+import sendImage from '../../assets/images/arrow_forward_FILL0_wght300_GRAD0_opsz20 1.svg';
 import { EditInputComponent, MessengerComponent } from '../../components';
 
 export { default as EditProfile } from './EditProfile.hbs?raw';
@@ -12,8 +16,15 @@ Handlebars.registerHelper('goBackImg', () => goBackImg);
 
 Handlebars.registerHelper('addPhotoImg', () => addPhotoImg);
 
+type EditProfileComponentProps = {
+  goBackImg: String;
+  addPhotoImg: String;
+  inputList: EditInputComponent[];
+  messenger: MessengerComponent;
+}
+
 export class EditProfileComponent extends Block {
-  constructor(props) {
+  constructor(props: EditProfileComponentProps) {
     super({
       ...props,
       goBackImg,
@@ -56,7 +67,12 @@ export class EditProfileComponent extends Block {
           inputPlaceHolder: 'calebevans@gmail.com',
         }),
       ],
-      messenger: new MessengerComponent({}),
+      messenger: new MessengerComponent({
+        chatAvatarImage,
+        editImage,
+        attachImage,
+        sendImage,
+      }),
     });
   }
 

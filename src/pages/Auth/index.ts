@@ -1,27 +1,90 @@
-// @ts-nocheck
+import Handlebars from "handlebars";
+import "./Auth.scss";
+import astronautImage from "../../assets/images/astronaut.png";
+import logoImage from "../../assets/images/logo.svg";
+import Block from "../../tools/Block";
+import {
+  PageTitleBlock,
+  FormAuthComponent,
+  InputBlock,
+  TermsCheckboxComponent,
+  ConfirmButtonComponent,
+} from "../../components";
 
-import Handlebars from 'handlebars';
-import './Auth.scss';
-import astronautImage from '../../assets/images/astronaut.png';
-import logoImage from '../../assets/images/logo.svg';
-import Block from '../../tools/Block';
-import { PageTitleBlock, FormAuthComponent} from '../../components';
+export { default as AuthPage } from "./Auth.hbs?raw";
 
-export { default as AuthPage } from './Auth.hbs?raw';
+Handlebars.registerHelper("astronautImage", () => astronautImage);
 
-Handlebars.registerHelper('astronautImage', () => astronautImage);
+Handlebars.registerHelper("logoImage", () => logoImage);
 
-Handlebars.registerHelper('logoImage', () => logoImage);
+interface AuthPageProps {
+  logoImage: string;
+  pageTitle: PageTitleBlock;
+  formComponent: FormAuthComponent;
+  astronautImage: string;
+}
 
 export class AuthPageComponent extends Block {
-  constructor(props) {
+  constructor(props: AuthPageProps) {
     super({
       ...props,
       logoImage,
       pageTitle: new PageTitleBlock({
-        title: 'Create your account',
+        title: "Create your account",
       }),
-      formComponent: new FormAuthComponent(),
+      formComponent: new FormAuthComponent({
+        list: [
+          new InputBlock({
+            class: "form__email",
+            type: "email",
+            placeholder: "Email",
+            name: "email",
+            id: "reg-email",
+          }),
+          new InputBlock({
+            class: "form__login",
+            type: "text",
+            placeholder: "Login",
+            name: "email",
+            id: "reg-login",
+          }),
+          new InputBlock({
+            class: "form__password",
+            type: "password",
+            placeholder: "Password",
+            name: "password",
+            id: "reg-password",
+          }),
+          new InputBlock({
+            class: "form__password",
+            type: "password",
+            placeholder: "Confirm Password",
+            name: "confirm_password",
+            id: "reg-confirm-password",
+          }),
+          new InputBlock({
+            class: "form__name",
+            type: "text",
+            placeholder: "First Name",
+            name: "first_name",
+            id: "reg-first-name",
+          }),
+          new InputBlock({
+            class: "form__name",
+            type: "text",
+            placeholder: "Last Name",
+            name: "second_name",
+            id: "reg-last-name",
+          }),
+        ],
+        checkbox: new TermsCheckboxComponent({
+          text: "I accept",
+          linkText: "Terms of Service",
+        }),
+        button: new ConfirmButtonComponent({
+          buttonText: "Start",
+        }),
+      }),
       astronautImage,
     });
   }
