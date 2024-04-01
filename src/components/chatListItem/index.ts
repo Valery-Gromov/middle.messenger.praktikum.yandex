@@ -1,4 +1,3 @@
-import './chatListItem.scss';
 import Handlebars from 'handlebars';
 import Block from '../../tools/Block';
 

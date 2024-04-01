@@ -1,4 +1,3 @@
-import './selectedChatList.scss';
 import Block from '../../tools/Block';
 
 export { default as SelectedChatList } from './selectedChatList.hbs?raw';
