@@ -56,7 +56,6 @@ export default class Block {
 
   private _removeEvents(): void {
     const { events } = this.props;
-    console.log('remove Element', events);
 
     if (events) {
       Object.entries(events).forEach(([eventName, eventHandler]) => {
@@ -193,13 +192,12 @@ export default class Block {
       }
     });
 
-    this._removeEvents();
-
     const newElement = fragment.content.firstElementChild as HTMLTemplateElement;
     if (this._element) {
       this._element.replaceWith(newElement);
     }
     this._element = newElement;
+    this._removeEvents();
     this._addEvents();
   }
 
