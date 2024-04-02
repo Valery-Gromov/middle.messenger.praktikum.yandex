@@ -91,7 +91,7 @@ export class AuthPageComponent extends Block {
 
   render() {
     return `<section class='authorize-section'>
-    <img class='authorize-section__logo' src='{{{ logoImage }}}' />
+    <img class='authorize-section__logo' alt='Logo' src='{{{ logoImage }}}' />
     <div class='authorize-section__form-container'>
       {{{ pageTitle }}}
       <p class='authorize-section__form-decription'>Start chat with your friends today</p>
