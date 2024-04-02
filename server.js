@@ -1,6 +1,8 @@
+// eslint-disable-next-line
 const express = require('express');
 
 const app = express();
+// eslint-disable-next-line
 const path = require('path');
 
 // Папка для хранения статических файлов
