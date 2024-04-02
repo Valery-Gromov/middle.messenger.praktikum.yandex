@@ -1,52 +1,53 @@
-import Handlebars from 'handlebars';
-import * as Components from './components';
-import * as Pages from './pages';
+import * as Pages from "./pages";
 
-type PageKey = 'auth' | 'chat' | 'login' | 'editProfile' | 'notFound' | 'serverError';
+type PageKey =
+  | "auth"
+  | "chat"
+  | "login"
+  | "editProfile"
+  | "notFound"
+  | "serverError";
 
-type Pages = {
-  auth: String;
-  chat: String;
-  login: String;
-  editProfile: String;
-  notFound: String;
-  serverError: String;
-};
-
-const pages: Pages = {
-  auth: Pages.AuthPage,
-  chat: Pages.Chat,
-  login: Pages.Login,
-  editProfile: Pages.EditProfile,
-  notFound: Pages.NotFound,
-  serverError: Pages.ServerError,
-};
-
-Object.entries(Components).forEach(([name, component]) => {
-  Handlebars.registerPartial(name, component);
-});
-
-function navigate(page: PageKey) {
-
-  const source = pages[page];
-
-  const handlebarsFunct = Handlebars.compile(source);
-  let app = document.getElementById('app');
-  app!.innerHTML = handlebarsFunct(page);
+interface PageComponents {
+  [key: string]: HTMLElement | null;
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('auth'));
+const authPageElement = Pages.authPage.getContent();
+const loginPageElement = Pages.loginPage.getContent();
+const chatPageElement = Pages.chatPage.getContent();
+const editProfileElement = Pages.editProfile.getContent();
+const notFoundElement = Pages.notFound.getContent();
+const serverErrorElement = Pages.serverError.getContent();
 
-document.addEventListener('click', (e) => {
+const pages: PageComponents = {
+  auth: authPageElement,
+  chat: chatPageElement,
+  login: loginPageElement,
+  editProfile: editProfileElement,
+  notFound: notFoundElement,
+  serverError: serverErrorElement,
+};
+
+function navigate(page: PageKey) {
+  const app = document.getElementById("app");
+  const source = pages[page];
+
+  if (app && source) {
+    app.innerHTML = "";
+    app.appendChild(source);
+    console.log("Navigated to page:", page);
+  } else {
+    console.error("Failed to navigate to page:", page);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => navigate("auth"));
+
+document.querySelector("nav")?.addEventListener("click", (e) => {
   e.preventDefault();
-  e.stopImmediatePropagation();
 
   const target = e.target as HTMLElement;
-  let page;
-
-  if (e.target) {
-    page = target.getAttribute('page');
-  }
+  const page = target.getAttribute("page");
 
   if (page) {
     navigate(page as PageKey);

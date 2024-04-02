@@ -1,0 +1,9 @@
+{
+    "extends": ["stylelint-config-standard"],
+    "plugins": [],
+    "rules": {
+      "at-rule-no-unknown": null,
+      "selector-class-pattern": null,
+      "function-url-quotes": "never"
+    }
+  }

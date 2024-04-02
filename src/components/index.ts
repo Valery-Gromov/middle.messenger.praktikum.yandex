@@ -1,8 +1,9 @@
-export { PageTitle } from './pageTitle';
-export { FormBlock } from './formBlock';
-export { Input } from './input';
-export { ConfirmButton } from './confirmButton';
-export { SelectedChatList } from './selectedChatList';
-export { ChatListItem } from './chatListItem';
-export { termsCheckbox } from './termsCheckbox';
-export { editInput } from './editInput';
+export { PageTitle, PageTitleBlock } from './pageTitle';
+export { FormAuthComponent, FormLoginComponent } from './formBlock';
+export { Input, InputBlock } from './input';
+export { ConfirmButton, ConfirmButtonComponent } from './confirmButton';
+export { SelectedChatList, SelectedChatListComponent } from './selectedChatList';
+export { ChatListItem, ChatListItemComponent } from './chatListItem';
+export { termsCheckbox, TermsCheckboxComponent } from './termsCheckbox';
+export { editInput, EditInputComponent } from './editInput';
+export { MessengerComponent } from './messenger';
