@@ -1,6 +1,6 @@
-export { AuthPage, AuthPageComponent } from './Auth';
-export { Chat, ChatComponent } from './Chat';
-export { Login, LoginPageComponent } from './Login';
-export { EditProfile, EditProfileComponent } from './EditProfile';
-export { NotFound, NotFoundComponent } from './NotFound';
-export { ServerErrorComponent } from './ServerError';
+export { AuthPage, AuthPageComponent, authPage } from './Auth';
+export { Chat, ChatComponent, chatPage } from './Chat';
+export { Login, LoginPageComponent, loginPage } from './Login';
+export { EditProfile, EditProfileComponent, editProfile } from './EditProfile';
+export { NotFound, NotFoundComponent, notFound } from './NotFound';
+export { ServerErrorComponent, serverError } from './ServerError';

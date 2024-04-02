@@ -70,3 +70,30 @@ export class LoginPageComponent extends Block {
   </section>`;
   }
 }
+
+export const loginPage = new LoginPageComponent({logoImage,
+  pageTitle: new PageTitleBlock({
+    title: "Create your account",
+  }),
+  formComponent: new FormLoginComponent({
+    lists: [
+      new InputBlock({
+        class: "form__login",
+        type: "text",
+        placeholder: "Login",
+        name: "login",
+        id: "login-login",
+      }),
+      new InputBlock({
+        class: "form__password",
+        type: "password",
+        placeholder: "Password",
+        name: "password",
+        id: "login-password",
+      }),
+    ],
+    button: new ConfirmButtonComponent({
+      buttonText: "Start",
+    }),
+  }),
+  astronautImage,});

@@ -11,10 +11,9 @@ type ServerErrorComponentProps = {
   logoImage: string;
   pageTitle: PageTitleBlock;
   buttonText: ConfirmButtonComponent;
-}
+};
 
 export class ServerErrorComponent extends Block {
-  
   constructor(props: ServerErrorComponentProps) {
     super({
       ...props,
@@ -45,3 +44,13 @@ export class ServerErrorComponent extends Block {
         `;
   }
 }
+
+export const serverError = new ServerErrorComponent({
+  logoImage,
+  pageTitle: new PageTitleBlock({
+    title: "Ooops....Server Error",
+  }),
+  buttonText: new ConfirmButtonComponent({
+    buttonText: "Back Home",
+  }),
+});

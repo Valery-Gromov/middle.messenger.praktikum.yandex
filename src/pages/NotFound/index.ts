@@ -47,3 +47,13 @@ export class NotFoundComponent extends Block {
         `;
   }
 }
+
+export const notFound = new NotFoundComponent({
+  logoImage,
+      pageTitle: new PageTitleBlock({
+        title: "Ooops....Page not found",
+      }),
+      buttonText: new ConfirmButtonComponent({
+        buttonText: "Back Home",
+      }),
+});
