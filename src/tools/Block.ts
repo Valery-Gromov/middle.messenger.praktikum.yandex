@@ -167,6 +167,7 @@ export default class Block {
 
 // eslint-disable-next-line
     Object.entries(this.lists).forEach(([key, child]) => {
+      console.log(key);
       const listCont = this._createDocumentElement("template");
       child.forEach((item) => {
         if (item instanceof Block) {
