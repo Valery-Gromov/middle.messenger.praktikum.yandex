@@ -9,7 +9,7 @@ type ChatListItemComponentProps = {
   contactName: string;
   messageTime: string;
   messageText: string;
-  unreadedMessagesCount: number;
+  unreadedMessagesCount: string;
 }
 
 export class ChatListItemComponent extends Block {
