@@ -87,7 +87,8 @@ export default class Block {
     }
   }
 
-  componentDidUpdate(): boolean {
+  componentDidUpdate(oldProps: Props, newProps: Props): boolean {
+    console.log(oldProps, newProps);
     return true;
   }
 
