@@ -207,15 +207,18 @@ export default class Block {
 
   show(): void {
     const content = this.getContent();
+    console.log('content SHOW', content);
     if (content) {
-      content.style.display = "block";
+      content.classList.remove("hidden");
     }
   }
 
   hide(): void {
     const content = this.getContent();
+    console.log('content HIDE', content);
+
     if (content) {
-      content.style.display = "none";
+      content.classList.add("hidden");
     }
   }
 }

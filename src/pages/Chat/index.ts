@@ -14,6 +14,8 @@ import {
   MessengerComponent,
   SelectedChatListComponent,
 } from "../../components";
+import { ChatOptionsButton } from "../../components/chatOptionsButton";
+import { router } from "../../tools/Router";
 
 export { default as Chat } from "./Chat.hbs?raw";
 
@@ -83,11 +85,20 @@ type ChatComponentProps = {
   messenger: MessengerComponent;
 };
 
+const handleOptionsButtonClick = () => {
+  router.go('/settings')
+}
+
 export class ChatComponent extends Block {
   constructor(props: ChatComponentProps) {
     super({
       ...props,
-      burgerImage,
+      optionsButton: new ChatOptionsButton({
+        buttonImage: burgerImage,
+        buttonClass: "options-button",
+        alt: 'Menu button',
+        handleClick: handleOptionsButtonClick,
+      }),
       newChatImage,
       searchImage,
       chatOptionsItem: [
@@ -151,9 +162,7 @@ export class ChatComponent extends Block {
     return `<section class='chat-container'>
     <div class='chat-options'>
       <div class='chat-container__header header'>
-        <div class='chat-options__options-button options-button'>
-          <img src='{{{ burgerImage }}}' alt='open menu' />
-        </div>
+        {{{ optionsButton }}}
         <h3 class='chat-options__options-title'>Messages</h3>
         <div class='chat-options__create-chat-button'>
           <img src='{{{ newChatImage }}}' alt='open new chat' />

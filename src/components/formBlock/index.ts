@@ -1,16 +1,10 @@
-import './formBlock.scss';
-import Block from '../../tools/Block';
-import { InputBlock } from '../input';
-import { TermsCheckboxComponent } from '../termsCheckbox';
-import { ConfirmButtonComponent } from '../confirmButton';
-
-// interface InputProps {
-//   class: string;
-//   type: string;
-//   placeholder: string;
-//   name: string;
-//   id: string;
-// }
+import "./formBlock.scss";
+import Block from "../../tools/Block";
+import { InputBlock } from "../input";
+import { TermsCheckboxComponent } from "../termsCheckbox";
+import { ConfirmButtonComponent } from "../confirmButton";
+import { createUserController, getUserController, loginUserController } from "../../controllers/userControllers";
+import { getFormData } from "../../utils/getFormData";
 
 interface FormAuthProps {
   list: InputBlock[];
@@ -23,23 +17,28 @@ interface FormLoginProps {
   button: ConfirmButtonComponent;
 }
 
-const handleFormData = (e: Event) => {
-  e.preventDefault(); // Отмена отправки формы
-  // Получение всех полей формы
+const handleRegisterFormData = (e: Event) => {
+  e.preventDefault();
 
-  const formData = new FormData(e.target as HTMLFormElement);
+  const data = getFormData(e);
+  console.log("formDataObject", data);
 
-  // Создание объекта для сбора данных
-  const formDataObject: Record<string, FormDataEntryValue> = {};
-
-  // Проход по каждому полю формы и добавление его в объект
-  formData.forEach((value, key) => {
-    formDataObject[key] = value;
-  });
-
-  // Вывод объекта в консоль
-  console.log('formDataObject', formDataObject);
+  createUserController(data);
+  getUserController();
 };
+
+const handleLoginFormData = (e: Event) => {
+  e.preventDefault();
+  const data = getFormData(e);
+  console.log("formDataObject", data);
+
+  loginUserController(data)
+    .then(() => {
+      
+    })
+
+  getUserController();
+}
 
 export class FormAuthComponent extends Block {
   constructor(props: FormAuthProps) {
@@ -47,60 +46,60 @@ export class FormAuthComponent extends Block {
       ...props,
       events: {
         submit: (e: Event) => {
-          handleFormData(e);
-          console.log('submit');
+          handleRegisterFormData(e);
+          console.log("submit");
         },
       },
       list: [
         new InputBlock({
-          class: 'form__email',
-          type: 'email',
-          placeholder: 'Email',
-          name: 'email',
-          id: 'reg-email',
+          class: "form__email",
+          type: "email",
+          placeholder: "Email",
+          name: "email",
+          id: "reg-email",
         }),
         new InputBlock({
-          class: 'form__login',
-          type: 'text',
-          placeholder: 'Login',
-          name: 'email',
-          id: 'reg-login',
+          class: "form__login",
+          type: "text",
+          placeholder: "Login",
+          name: "login",
+          id: "reg-login",
         }),
         new InputBlock({
-          class: 'form__password',
-          type: 'password',
-          placeholder: 'Password',
-          name: 'password',
-          id: 'reg-password',
+          class: "form__password",
+          type: "password",
+          placeholder: "Password",
+          name: "password",
+          id: "reg-password",
         }),
         new InputBlock({
-          class: 'form__password',
-          type: 'password',
-          placeholder: 'Confirm Password',
-          name: 'confirm_password',
-          id: 'reg-confirm-password',
+          class: "form__password",
+          type: "tel",
+          placeholder: "Phone",
+          name: "phone",
+          id: "reg-phone",
         }),
         new InputBlock({
-          class: 'form__name',
-          type: 'text',
-          placeholder: 'First Name',
-          name: 'first_name',
-          id: 'reg-first-name',
+          class: "form__name",
+          type: "text",
+          placeholder: "First Name",
+          name: "first_name",
+          id: "reg-first-name",
         }),
         new InputBlock({
-          class: 'form__name',
-          type: 'text',
-          placeholder: 'Last Name',
-          name: 'second_name',
-          id: 'reg-last-name',
+          class: "form__name",
+          type: "text",
+          placeholder: "Last Name",
+          name: "second_name",
+          id: "reg-last-name",
         }),
       ],
       checkbox: new TermsCheckboxComponent({
-        text: 'I accept',
-        linkText: 'Terms of Service',
+        text: "I accept",
+        linkText: "Terms of Service",
       }),
       button: new ConfirmButtonComponent({
-        buttonText: 'Start',
+        buttonText: "Start",
       }),
     });
   }
@@ -123,33 +122,31 @@ export class FormLoginComponent extends Block {
       ...props,
       events: {
         submit: (e: Event) => {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          console.log('submit');
-          handleFormData(e);
+          console.log("submit");
+          handleLoginFormData(e);
         },
         click: () => {
-          console.log('form click');
+          console.log("form click");
         },
       },
       lists: [
         new InputBlock({
-          class: 'form__login',
-          type: 'text',
-          placeholder: 'Login',
-          name: 'login',
-          id: 'login-login',
+          class: "form__login",
+          type: "text",
+          placeholder: "Login",
+          name: "login",
+          id: "login-login",
         }),
         new InputBlock({
-          class: 'form__password',
-          type: 'password',
-          placeholder: 'Password',
-          name: 'password',
-          id: 'login-password',
+          class: "form__password",
+          type: "password",
+          placeholder: "Password",
+          name: "password",
+          id: "login-password",
         }),
       ],
       button: new ConfirmButtonComponent({
-        buttonText: 'Start',
+        buttonText: "Start",
       }),
     });
   }

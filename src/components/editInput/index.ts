@@ -17,16 +17,14 @@ type EditInputComponentProps = {
 
 export class EditInputComponent extends Block {
   constructor(props: EditInputComponentProps) {
-    super({ ...props }); // Передаем props в конструктор родительского класса Block
+    super({ ...props });
   }
 
-  // Переопределяем метод рендеринга
   render() {
-    // Используем Handlebars для компиляции шаблона кнопки
     return Handlebars.compile(`
     <label class='editForm__input'>
       {{inputTitle}}
-      <input type='{{inputType}}' placeholder='{{inputPlaceHolder}}' name='{{inputName}}' />
+      <input type='{{inputType}}' value='{{inputPlaceHolder}}' name='{{inputName}}' />
       <img src='{{penImage}}' alt='edit' />
     </label>
         `)(this.props);
