@@ -1,7 +1,6 @@
-import { userApi } from "../api/UserApi";
-import { RequestOptions } from "../tools/HTTPTransport";
-import { router } from "../tools/Router";
-
+import { userApi } from '../api/UserApi';
+import { RequestOptions } from '../tools/HTTPTransport';
+import { router } from '../tools/Router';
 
 // email
 // :
@@ -27,11 +26,11 @@ type FormDataObjectType = Record<string, FormDataEntryValue>;
 export const createUserController = (formDataObject: FormDataObjectType) => {
   const requestOptions = {
     headers: {
-      "content-type": "application/json",
+      'content-type': 'application/json',
     },
-    credentials: "include", // Нужно подставлять куки
-    mode: "cors", // Работаем с CORS
-    method: "POST",
+    credentials: 'include', // Нужно подставлять куки
+    mode: 'cors', // Работаем с CORS
+    method: 'POST',
     data: JSON.stringify(formDataObject),
   };
 
@@ -39,18 +38,18 @@ export const createUserController = (formDataObject: FormDataObjectType) => {
 
   userApi
     .createUser(requestOptions as RequestOptions)
-    .then(() => router.go("/messenger"))
+    .then(() => router.go('/messenger'))
     .catch((err) => console.log(err));
 };
 
 export const getUserController = async () => {
   const requestOptions = {
     headers: {
-      "content-type": "application/json",
+      'content-type': 'application/json',
     },
-    credentials: "include", // Нужно подставлять куки
-    mode: "cors", // Работаем с CORS
-    method: "GET", // В этой функции должен быть GET-запрос, а не POST
+    credentials: 'include', // Нужно подставлять куки
+    mode: 'cors', // Работаем с CORS
+    method: 'GET', // В этой функции должен быть GET-запрос, а не POST
   };
 
   try {
@@ -67,18 +66,16 @@ export const getUserController = async () => {
 export const loginUserController = (formDataObject: FormDataObjectType) => {
   const requestOptions = {
     headers: {
-      "content-type": "application/json",
-      credentials: "include", // Нужно подставлять куки
-      mode: "cors", // Работаем с CORS
+      'content-type': 'application/json',
+      credentials: 'include', // Нужно подставлять куки
+      mode: 'cors', // Работаем с CORS
     },
-    method: "POST",
+    method: 'POST',
     data: JSON.stringify(formDataObject),
   };
 
   userApi
     .login(requestOptions as RequestOptions)
-    .then(() => router.go("/messenger"))
+    .then(() => router.go('/messenger'))
     .catch((err) => console.log(err));
 };
-
-

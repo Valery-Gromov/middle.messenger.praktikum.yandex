@@ -1,7 +1,6 @@
-import Handlebars from "handlebars";
-import Block from "../../tools/Block";
-import "./chatOptionsButton.scss";
-
+import Handlebars from 'handlebars';
+import Block from '../../tools/Block';
+import './chatOptionsButton.scss';
 
 type ChatOptionsButtontProps = {
   buttonImage: string;
@@ -11,7 +10,6 @@ type ChatOptionsButtontProps = {
 };
 
 export class ChatOptionsButton extends Block {
-
   constructor(props: ChatOptionsButtontProps) {
     super({
       ...props,

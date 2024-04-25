@@ -10,8 +10,8 @@ interface DataObject {
 }
 
 function queryStringify(data: DataObject): string {
-  if (typeof data !== "object" || data === null) {
-    throw new Error("Input must be an object");
+  if (typeof data !== 'object' || data === null) {
+    throw new Error('Input must be an object');
   }
 
   const keyValuePairs: string[] = [];
@@ -22,36 +22,36 @@ function queryStringify(data: DataObject): string {
 
       keyValuePairs.push(
         `${encodeURIComponent(key)}=${encodeURIComponent(
-          stringifyValue(value)
-        )}`
+          stringifyValue(value),
+        )}`,
       );
     }
   }
 
-  const queryString = keyValuePairs.join("&");
+  const queryString = keyValuePairs.join('&');
 
-  return queryString ? `?${queryString}` : "";
+  return queryString ? `?${queryString}` : '';
 }
 
 // eslint-disable-next-line
 function stringifyValue(value: any): string {
-  if (typeof value === "object" && value !== null) {
+  if (typeof value === 'object' && value !== null) {
     if (Array.isArray(value)) {
-      return value.join(",");
+      return value.join(',');
     }
-    return "[object Object]";
+    return '[object Object]';
   }
   return String(value);
 }
 
 // Определяем тип для метода
-type HttpMethodType = "GET" | "POST" | "PUT" | "DELETE";
+type HttpMethodType = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 export const METHODS = {
-  GET: "GET",
-  POST: "POST",
-  PUT: "PUT",
-  DELETE: "DELETE",
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  DELETE: 'DELETE',
 };
 
 // Определяем интерфейс для объекта параметров запроса
@@ -60,7 +60,7 @@ export interface RequestOptions {
   credentials?: string, // Нужно подставлять куки
   mode?: string, // Работаем с CORS
   headers?: { [key: string]: string };
-  body?: String;
+  body?: string;
   // eslint-disable-next-line
   data?: any;
   timeout?: number;
@@ -69,44 +69,36 @@ export interface RequestOptions {
 type HTTPMethod = (url: string, options?: RequestOptions) => Promise<unknown>;
 
 export class HTTPTransport {
-  get: HTTPMethod = (url, options) => {
-    return this.request(
-      url,
-      { ...options, method: 'GET' },
-      options?.timeout
-    );
-  };
+  get: HTTPMethod = (url, options) => this.request(
+    url,
+    { ...options, method: 'GET' },
+    options?.timeout,
+  );
 
-  post: HTTPMethod = (url, options) => {
-    return this.request(
-      url,
-      { ...options, method: 'POST' },
-      options?.timeout
-    );
-  };
+  post: HTTPMethod = (url, options) => this.request(
+    url,
+    { ...options, method: 'POST' },
+    options?.timeout,
+  );
 
-  put: HTTPMethod = (url, options) => {
-    return this.request(
-      url,
-      { ...options, method: 'PUT' },
-      options?.timeout
-    );
-  };
+  put: HTTPMethod = (url, options) => this.request(
+    url,
+    { ...options, method: 'PUT' },
+    options?.timeout,
+  );
 
-  delete: HTTPMethod = (url, options) => {
-    return this.request(
-      url,
-      { ...options, method: 'DELETE' },
-      options?.timeout
-    );
-  };
+  delete: HTTPMethod = (url, options) => this.request(
+    url,
+    { ...options, method: 'DELETE' },
+    options?.timeout,
+  );
 
   request = (url: string, options: RequestOptions, timeout = 5000) => {
     const { headers = {}, method, data } = options;
 
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
       if (!method) {
-        reject("No method");
+        reject('No method');
         return;
       }
 

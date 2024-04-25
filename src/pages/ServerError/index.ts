@@ -1,11 +1,11 @@
-import Handlebars from "handlebars";
-import { ConfirmButtonComponent, PageTitleBlock } from "../../components";
-import logoImage from "../../assets/images/logo.svg";
-import Block from "../../tools/Block";
-import "../Auth/Auth.scss";
-import "../NotFound/NotFound.scss";
+import Handlebars from 'handlebars';
+import { ConfirmButtonComponent, PageTitleBlock } from '../../components';
+import logoImage from '../../assets/images/logo.svg';
+import Block from '../../tools/Block';
+import '../Auth/Auth.scss';
+import '../NotFound/NotFound.scss';
 
-Handlebars.registerHelper("logoImage", () => logoImage);
+Handlebars.registerHelper('logoImage', () => logoImage);
 
 type ServerErrorComponentProps = {
   logoImage: string;
@@ -19,10 +19,10 @@ export class ServerErrorComponent extends Block {
       ...props,
       logoImage,
       pageTitle: new PageTitleBlock({
-        title: "Ooops....Server Error",
+        title: 'Ooops....Server Error',
       }),
       buttonText: new ConfirmButtonComponent({
-        buttonText: "Back Home",
+        buttonText: 'Back Home',
       }),
     }); // Передаем props в конструктор родительского класса Block
   }
@@ -48,9 +48,9 @@ export class ServerErrorComponent extends Block {
 export const serverError = new ServerErrorComponent({
   logoImage,
   pageTitle: new PageTitleBlock({
-    title: "Ooops....Server Error",
+    title: 'Ooops....Server Error',
   }),
   buttonText: new ConfirmButtonComponent({
-    buttonText: "Back Home",
+    buttonText: 'Back Home',
   }),
 });

@@ -13,9 +13,7 @@ interface InputProps {
   id: string;
 }
 
-
 export class InputBlock extends Block {
-
   constructor(props: InputProps) {
     super({
       ...props,

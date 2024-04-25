@@ -1,29 +1,29 @@
 // @ts-nocheck
-import { LoginPageComponent } from "../pages";
-import Route from "./Route";
+import { LoginPageComponent } from '../pages';
+import Route from './Route';
 
 export default class Router {
   constructor(rootQuery) {
-      if (Router.__instance) {
-          return Router.__instance;
-      }
+    if (Router.__instance) {
+      return Router.__instance;
+    }
 
-      this.routes = [];
-      this.history = window.history;
-      this._currentRoute = null;
-      this._rootQuery = rootQuery;
+    this.routes = [];
+    this.history = window.history;
+    this._currentRoute = null;
+    this._rootQuery = rootQuery;
 
-      Router.__instance = this;
+    Router.__instance = this;
   }
 
   use(pathname, block) {
-      const route = new Route(pathname, block, {rootQuery: this._rootQuery});
-      this.routes.push(route);
-      return this;
+    const route = new Route(pathname, block, { rootQuery: this._rootQuery });
+    this.routes.push(route);
+    return this;
   }
 
   start() {
-    window.onpopstate = event => {
+    window.onpopstate = (event) => {
       this._onRoute(event.currentTarget.location.pathname);
     };
 
@@ -31,22 +31,22 @@ export default class Router {
   }
 
   _onRoute(pathname) {
-      const route = this.getRoute(pathname);
+    const route = this.getRoute(pathname);
 
-      if (!route) {
-        return;
-      }
+    if (!route) {
+      return;
+    }
 
-      if (this._currentRoute) {
-        this._currentRoute.leave();
-      }
+    if (this._currentRoute) {
+      this._currentRoute.leave();
+    }
 
-      this._currentRoute = route;
-      this._currentRoute.render(route, pathname);
+    this._currentRoute = route;
+    this._currentRoute.render(route, pathname);
   }
 
   go(pathname) {
-    this.history.pushState({}, "", pathname);
+    this.history.pushState({}, '', pathname);
     this._onRoute(pathname);
   }
 
@@ -59,9 +59,9 @@ export default class Router {
   }
 
   getRoute(pathname) {
-      return this.routes.find(route => route.match(pathname));
+    return this.routes.find((route) => route.match(pathname));
   }
 }
 
-const app = document.getElementById("app");
+const app = document.getElementById('app');
 export const router = new Router(app);

@@ -1,20 +1,42 @@
 {
-  "env": {
-    "browser": true,
-    "node": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "extends": "airbnb/base",
   "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2021,
-    "sourceType": "module"
+  "plugins": [
+    "@typescript-eslint",
+    "import"
+  ],
+  "globals": {
+    "document": false
   },
-  "plugins": ["@typescript-eslint"],
+
   "rules": {
-    // Дополнительные правила ESLint здесь
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "max-len": [2, 120],
+    "max-params": [2, 5],
+    "no-console": "off",
+    "eol-last": 0,
+    "@typescript-eslint/no-unused-vars": "error",
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
+    "no-use-before-define": ["error", {"functions": false}],
+    "import/first": "off"
+//    "import/no-cycle": "off"
+  },
+  "env":    {
+    "browser": true
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"]
+    },
+    "import/internal-regex": "^@",
+    "import/resolver": {
+      "eslint-import-resolver-custom-alias": {
+        "alias": {
+          "@": "./src"
+        },
+        "extensions": [".ts"]
+      }
+    }
   }
 }

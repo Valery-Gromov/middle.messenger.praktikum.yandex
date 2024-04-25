@@ -9,7 +9,6 @@ type PageTitleBlockProps = {
 }
 
 export class PageTitleBlock extends Block {
-
   constructor(props: PageTitleBlockProps) {
     super({ ...props }); // Передаем props в конструктор родительского класса Block
   }

@@ -9,7 +9,6 @@ type ConfirmButtonComponentProps = {
 }
 
 export class ConfirmButtonComponent extends Block {
-
   constructor(props: ConfirmButtonComponentProps) {
     super({
       ...props,

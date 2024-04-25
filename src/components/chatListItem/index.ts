@@ -13,7 +13,6 @@ type ChatListItemComponentProps = {
 }
 
 export class ChatListItemComponent extends Block {
-
   constructor(props: ChatListItemComponentProps) {
     super({ ...props }); // Передаем props в конструктор родительского класса Block
   }

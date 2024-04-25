@@ -1,7 +1,7 @@
-import BaseAPI from "./BaseApi";
-import { HTTPTransport, RequestOptions } from "../tools/HTTPTransport";
+import BaseAPI from './BaseApi';
+import { HTTPTransport, RequestOptions } from '../tools/HTTPTransport';
 
-const baseURL = "https://ya-praktikum.tech/api/v2";
+const baseURL = 'https://ya-praktikum.tech/api/v2';
 const http = new HTTPTransport();
 
 export class UserAPI extends BaseAPI {
@@ -29,4 +29,4 @@ export class UserAPI extends BaseAPI {
   }
 }
 
-export const userApi = new UserAPI(baseURL)
+export const userApi = new UserAPI(baseURL);

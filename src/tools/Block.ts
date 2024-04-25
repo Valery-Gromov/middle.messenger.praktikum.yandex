@@ -1,5 +1,5 @@
-import Handlebars from "handlebars";
-import EventBus from "./EventBus";
+import Handlebars from 'handlebars';
+import EventBus from './EventBus';
 
 interface Props {
   // eslint-disable-next-line
@@ -18,25 +18,28 @@ type Lists = {
 
 export default class Block {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render",
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   } as const;
 
   private _element: HTMLElement | null = null;
+
   private _id: number;
 
   props: Props;
+
   children: Children;
+
   lists: Lists;
+
   eventBus: () => EventBus;
 
   // eslint-disable-next-line
   constructor(propsWithChildren: { [key: string]: any } = {}) {
     const eventBus = new EventBus();
-    const { props, children, lists } =
-      this._getChildrenPropsAndProps(propsWithChildren);
+    const { props, children, lists } = this._getChildrenPropsAndProps(propsWithChildren);
     this.props = this._makePropsProxy({ ...props });
     this.children = children;
     this.lists = lists;
@@ -128,7 +131,7 @@ export default class Block {
     return new Proxy(props, {
       get(target, prop) {
         const value = target[String(prop)];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
         const oldTarget = { ...target };
@@ -137,7 +140,7 @@ export default class Block {
         return true;
       },
       deleteProperty() {
-        throw new Error("No access");
+        throw new Error('No access');
       },
     });
   }
@@ -147,7 +150,7 @@ export default class Block {
   }
 
   protected render(): string {
-    return "";
+    return '';
   }
 
   private _render(): void {
@@ -163,7 +166,7 @@ export default class Block {
       propsAndStubs[key] = `<div data-id="__l_${_tmpId}"></div>`;
     });
 
-    const fragment = this._createDocumentElement("template");
+    const fragment = this._createDocumentElement('template');
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
 
     Object.values(this.children).forEach((child) => {
@@ -175,10 +178,10 @@ export default class Block {
       }
     });
 
-// eslint-disable-next-line
+    // eslint-disable-next-line
     Object.entries(this.lists).forEach(([key, child]) => {
       console.log(key);
-      const listCont = this._createDocumentElement("template");
+      const listCont = this._createDocumentElement('template');
       child.forEach((item) => {
         if (item instanceof Block) {
           listCont.content.append(item.getContent() as HTMLTemplateElement);
@@ -209,7 +212,7 @@ export default class Block {
     const content = this.getContent();
     console.log('content SHOW', content);
     if (content) {
-      content.classList.remove("hidden");
+      content.classList.remove('hidden');
     }
   }
 
@@ -218,7 +221,7 @@ export default class Block {
     console.log('content HIDE', content);
 
     if (content) {
-      content.classList.add("hidden");
+      content.classList.add('hidden');
     }
   }
 }

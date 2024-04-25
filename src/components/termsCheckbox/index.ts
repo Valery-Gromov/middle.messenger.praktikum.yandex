@@ -1,8 +1,8 @@
-import Handlebars from "handlebars";
-import Block from "../../tools/Block";
-import "./termsCheckbox.scss";
+import Handlebars from 'handlebars';
+import Block from '../../tools/Block';
+import './termsCheckbox.scss';
 
-export { default as termsCheckbox } from "./termsCheckbox.hbs?raw";
+export { default as termsCheckbox } from './termsCheckbox.hbs?raw';
 
 type TermsCheckboxComponentProps = {
   text: string;

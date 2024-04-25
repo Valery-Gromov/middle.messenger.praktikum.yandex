@@ -1,13 +1,13 @@
-import Handlebars from "handlebars";
-import { ConfirmButtonComponent, PageTitleBlock } from "../../components";
-import logoImage from "../../assets/images/logo.svg";
-import Block from "../../tools/Block";
-import "../Auth/Auth.scss";
-import "./NotFound.scss";
+import Handlebars from 'handlebars';
+import { ConfirmButtonComponent, PageTitleBlock } from '../../components';
+import logoImage from '../../assets/images/logo.svg';
+import Block from '../../tools/Block';
+import '../Auth/Auth.scss';
+import './NotFound.scss';
 
-export { default as NotFound } from "./NotFound.hbs?raw";
+export { default as NotFound } from './NotFound.hbs?raw';
 
-Handlebars.registerHelper("logoImage", () => logoImage);
+Handlebars.registerHelper('logoImage', () => logoImage);
 
 type NotFoundComponentProps = {
   logoImage: string;
@@ -16,16 +16,15 @@ type NotFoundComponentProps = {
 }
 
 export class NotFoundComponent extends Block {
-
   constructor(props: NotFoundComponentProps) {
     super({
       ...props,
       logoImage,
       pageTitle: new PageTitleBlock({
-        title: "Ooops....Page not found",
+        title: 'Ooops....Page not found',
       }),
       buttonText: new ConfirmButtonComponent({
-        buttonText: "Back Home",
+        buttonText: 'Back Home',
       }),
     }); // Передаем props в конструктор родительского класса Block
   }
@@ -50,10 +49,10 @@ export class NotFoundComponent extends Block {
 
 export const notFound = new NotFoundComponent({
   logoImage,
-      pageTitle: new PageTitleBlock({
-        title: "Ooops....Page not found",
-      }),
-      buttonText: new ConfirmButtonComponent({
-        buttonText: "Back Home",
-      }),
+  pageTitle: new PageTitleBlock({
+    title: 'Ooops....Page not found',
+  }),
+  buttonText: new ConfirmButtonComponent({
+    buttonText: 'Back Home',
+  }),
 });
