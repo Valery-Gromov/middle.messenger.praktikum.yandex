@@ -153,6 +153,14 @@ export default class Block {
     return '';
   }
 
+  setProps = (nextProps: Props) => {
+    if (!nextProps) {
+      return;
+    }
+
+    Object.assign(this.props, nextProps);
+  }
+
   private _render(): void {
     const propsAndStubs = { ...this.props };
     const _tmpId = Math.floor(100000 + Math.random() * 900000);
@@ -179,8 +187,7 @@ export default class Block {
     });
 
     // eslint-disable-next-line
-    Object.entries(this.lists).forEach(([key, child]) => {
-      console.log(key);
+    Object.entries(this.lists).forEach(([, child]) => {
       const listCont = this._createDocumentElement('template');
       child.forEach((item) => {
         if (item instanceof Block) {
@@ -210,7 +217,6 @@ export default class Block {
 
   show(): void {
     const content = this.getContent();
-    console.log('content SHOW', content);
     if (content) {
       content.classList.remove('hidden');
     }
@@ -218,8 +224,6 @@ export default class Block {
 
   hide(): void {
     const content = this.getContent();
-    console.log('content HIDE', content);
-
     if (content) {
       content.classList.add('hidden');
     }

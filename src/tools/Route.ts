@@ -1,5 +1,5 @@
 // @ts-nocheck
-import isEqual from '../utils/isEqual';
+import isEqual from "../utils/isEqual";
 
 export default class Route {
   constructor(pathname: string, blockClass: any, props: object) {
@@ -27,9 +27,6 @@ export default class Route {
   }
 
   render() {
-    console.log('this._blockClass', this._blockClass);
-    console.log('this._props', this._props);
-
     if (!this._block) {
       this._block = this._blockClass;
     }

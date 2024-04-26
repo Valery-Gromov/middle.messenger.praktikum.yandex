@@ -99,5 +99,3 @@ export const loginPage = new LoginPageComponent({
   }),
   astronautImage,
 });
-
-console.log(loginPage.show());

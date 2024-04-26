@@ -1,12 +1,12 @@
-import Block from '../tools/Block';
-import { StoreEvents, store } from '../tools/Store';
-import isEqual from './isEqual';
+import Block from "../tools/Block";
+import { StoreEvents, store } from "../tools/Store";
+import isEqual from "./isEqual";
 
 type Indexed<T = any> = {
   [key in string]: T;
 };
 
-function connect(mapStateToProps: (state: Indexed) => Indexed) {
+export function connect(mapStateToProps: (state: Indexed) => Indexed) {
   return function (Component: typeof Block) {
     return class extends Component {
       constructor(props: { [key: string]: any } | undefined) {

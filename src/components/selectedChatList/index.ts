@@ -14,8 +14,6 @@ export class SelectedChatListComponent extends Block {
 
   // Переопределяем метод рендеринга
   render() {
-    console.log('listItem', this.props);
-
     // Используем Handlebars для компиляции шаблона кнопки
     return `
       <li>
